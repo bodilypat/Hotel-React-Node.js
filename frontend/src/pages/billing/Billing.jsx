@@ -1,4 +1,4 @@
-//src/pages/Billing.jsx 
+//src/pages/billing/Billing.jsx 
 
 import React from 'react';
 import BillingForm from '../components/billing/BillingForm';
