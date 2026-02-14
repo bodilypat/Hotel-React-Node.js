@@ -1,4 +1,4 @@
-//src/pages/Rooms.jsx 
+//src/pages/rooms/Room.jsx 
 
 import React, { useState } from 'react';
 import RoomForm from '../components/rooms/RoomForm';
