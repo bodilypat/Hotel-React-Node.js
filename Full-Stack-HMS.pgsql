@@ -1,39 +1,56 @@
 Full-stack-Hotel-Management-System/
 ├── backend/   (Node.js + Express.js)                           
-│   │     
-│   ├── controllers/  
-│   │	├── authController.js
-│   │	├── roomController.js   
-│   │   ├── bookController.js
-│   │   ├── customerController.js
-│   │   ├── billingController.js
-│   │   └── reportController.js
-│   │   
-│   ├── models/  
-│   │	├── User.js
-│   │	├── Room.js
-│   │   ├── Booking.js
-│   │   ├── Customer.js
-│   │   └── Invoice.js
-│   │  
-│   ├── routes/  
-│   │	├── authRoutes.js
-│   │	├── roomRoutes.js  
-│   │   ├── bookingRoutes.js
-│   │   ├── customerRoutes.js
-│   │   ├── billingRoutes.js
-│   │   └── reportRoutes.js
-│   │ 
-│   ├── middleware/  
-│   │	├── authMiddleware.js
-│   │   └── errorHandler.js
-│   │ 
-│   ├── config/                                        
-│   │  	├── 
-│   │  	└── db.js           
-│   │
-│   ├── server.js                                
-│   └── package.json                 
+│   │      
+│   ├── src/    
+│   │   ├── config/                                        
+│   │   │  	├── db.js
+│   │   │  	└── env.js
+│   │   │ 
+│   │   ├── controllers/  
+│   │   │	├── auth.controller.js
+│   │   │	├── user.controller.js   
+│   │   │	├── room.controller.js   
+│   │   │   ├── booking.controller.js
+│   │   │   ├── payment.controller.js
+│   │   │   └── report.Controller.js
+│   │   │  
+│   │   ├── routes/  
+│   │   │	├── auth.routes.js
+│   │   │	├── user.routes.js   
+│   │   │	├── room.routes.js  
+│   │   │   ├── booking.routes.js
+│   │   │   ├── payment.routes.js
+│   │   │   └── report.routes.js
+│   │   │ 
+│   │   ├── services/  
+│   │   │	├── auth.service.js
+│   │   │	├── user.service.js   
+│   │   │	├── room.service.js  
+│   │   │   ├── booking.service.js
+│   │   │   ├── payment.service.js
+│   │   │   └── report.service.js
+│   │   │   
+│   │   ├── models/  
+│   │   │	├── auth.model.js
+│   │   │	├── user.model.js   
+│   │   │	├── room.model.js
+│   │   │   ├── booking.model.js
+│   │   │   └── payment.model.js
+│   │   │ 
+│   │   ├── middleware/  
+│   │   │	├── auth.middleware.js
+│   │   │   └── role.middleware.js
+│   │   ├── utils/  
+│   │   │	├── generateToken.js
+│   │   │	├── hashPassword.js
+│   │   │   └── logger.js
+│   │   │ 
+│   │   ├── validations/                                        
+│   │   │  	├── auth.validation.js
+│   │   │  	└── booking.validation.js
+│   │   │
+│   │   ├── app.js                              
+│   │   └── package.json                 
 │   
 ├── frontend (React)    
 │   ├── src/  
