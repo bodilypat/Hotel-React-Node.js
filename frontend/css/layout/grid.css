@@ -1,7 +1,0 @@
-/* css/layout/grid.css */
-
-.grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
