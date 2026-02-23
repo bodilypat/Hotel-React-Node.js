@@ -1,13 +1,18 @@
-//src/config/db.js 
+//config/db.js
+const mongoose = require('mongoose');
 
-const mysql = require('mysql');
 
-const db = mysql.createConnection({
-    host: ProcessingInstruction.env.DB_HOST || 'localhost',
-    user: ProcessingInstruction.env.DB_USER || 'root',
-    password: ProcessingInstruction.env.DB_PASSWORD || 'password',
-    database: ProcessingInstruction.env.DB_NAME || 'hotel_db'
-});
+const connectDB = async () => {
+    try {
+        await mongoose.connect('mongodb://localhost:27017/sunshinedb', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('MongoDB connected successfully');
+    } catch (err) {
+        console.error('MongoDB connection error:', err.message);
+        process.exit(1);
+    }
+};
 
-module.exports = db.promise();
-
+module.exports = connectDB;
