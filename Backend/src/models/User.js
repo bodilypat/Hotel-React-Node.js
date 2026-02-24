@@ -1,13 +1,13 @@
-//src/models/User.js 
+//models/User.js 
 
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
-    username: { 
-        type: String, 
-        required: true, 
-        unique: true,
-        trim: true
+    username: {
+        type: String,
+        required: true,
+        unique: true
     },
     password_hash: {
         type: String,
@@ -15,22 +15,29 @@ const userSchema = new mongoose.Schema({
     },
     full_name: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
     email: {
         type: String,
         required: true,
-        unique: true,
-        lowercase: true,
+        unique: true
     },
-    user_role: {
+    role: {
         type: String,
-        enum: ['Admin', 'Receptionist','Housekeeping', 'Manager'],
+        enum: ['admin', 'Receptionist','Housekeeping','Manager'], 
         required: true
     },
 }, { timestamps: true });
 
-module.exports = mongoose.model('User', userSchema);
+// Method to set password
+userSchema.methods.setPassword = async function(password) {
+    this.password_hash = await bcrypt.hash(password, 10);
+};
 
+// Method to validate password
+userSchema.methods.validatePassword = async function(password) {
+    return await bcrypt.compare(password, this.password_hash);
+};
+
+module.exports = mongoose.model('User', userSchema);
 

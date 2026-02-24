@@ -1,42 +1,34 @@
-//src/models/Guest.js
+//models/Guest.js 
 
 const mongoose = require('mongoose');
-
 const guestSchema = new mongoose.Schema({
     first_name: {
         type: String,
-        required: true,
-        trim: true,
+        required: true
     },
     last_name: {
         type: String,
-        required: true,
-        trim: true,
+        required: true
     },
     email: {
         type: String,
         required: true,
-        unique: true,
-        lowercase: true,
-        trim: true,
+        unique: true
     },
     phone_number: {
-        type: String,
-        required: true,
-        trim: true,
+        type: String
     },
     id_proof_type: {
         type: String,
-        enum: ["Passport", "Driver's License", "National ID"],
-        required: true,
+        enum: ['passport', 'driver_license', 'national_id'],
+        required: true
     },
     id_proof_number: {
         type: String,
-        required: true,
+        required: true  
     },
-}, {
-    timestamps: true,
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Guest', guestSchema);
+
 

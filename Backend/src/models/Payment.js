@@ -1,32 +1,30 @@
-//src/models/Payment.js 
+//models/Payment.js 
 
 const mongoose = require('mongoose');
-
-const paymentSchema = new mongoose.Schema({
-    reservation_id: {
+const PaymentSchema = new mongoose.Schema({
+    reservation: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Reservation',
-        required: true,
+        required: true
     },
     amount: {
         type: Number,
-        required: true,
-        min: 0,
+        required: true
+    },
+    payment_date: {
+        type: Date,
+        default: Date.now
     },
     payment_method: {
         type: String,
-        enum: ['Credit Card', 'Debit Card', 'Cash', 'Online'],
-        required: true,
+        enum: ['Credit Card', 'Debit Card', 'Cash', 'Bank Transfer'],
     },
     status: {
         type: String,
         enum: ['Pending', 'Completed', 'Failed'],
-        default: 'Pending',
-    },
-}, { timestamps: true });
+        default: 'Pending'
+    }
+});
+module.exports = mongoose.model('Payment', PaymentSchema);
 
-// Index for faster status search
-paymentSchema.index({ status: 1 });
-
-module.exports = mongoose.model('Payment', paymentSchema);
 
